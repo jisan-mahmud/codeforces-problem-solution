@@ -1,12 +1,9 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-#define endl "\n"
-#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define fraction(a) cout << fixed << setprecision(a);
-
-int main(){
-    optimize();
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     int t;
     cin >> t;
@@ -15,22 +12,16 @@ int main(){
         long long n, x, y, z;
         cin >> n >> x >> y >> z;
 
-  
-        long long t1 = (n + x + y - 1) / (x + y);
+
+        long long ans1 = ceil((double)n / (x + y));
 
 
-        long long ai;
+        long long ans2;
+       
+        long long rem = n - z * x;
+        ans2 = z + ceil((double)rem / (x + 10 * y));
 
-        if (x * z >= n) {
-            ai = (n + x - 1) / x;
-        } else {
-            long long rem = n - x * z;
-            long long rate = x + 10 * y;
-            ai = z + (rem + rate - 1) / rate;
-        }
 
-        cout << min(t1, ai) << endl;
+        cout << min(ans1, ans2) << "\n";
     }
-
-    return 0;
 }
